@@ -22,7 +22,8 @@ export class SearchComponent implements OnInit {
   submitForm(){
 
    this.movieApiService.getSearchMovie(this.searchForm.value).subscribe((res)=>{
-   this.searchResult = res.result
+    console.log(res)
+   this.searchResult = res.results
    })
   }
 }
