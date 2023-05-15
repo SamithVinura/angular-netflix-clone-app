@@ -10,11 +10,26 @@ export class HomeComponent implements OnInit{
 
   bannerResult:any=[]
   trendingMovieResult:any=[]
+  actionMovieResult: any = [];
+  adventureMovieResult: any = [];
+  animationMovieResult: any = [];
+  comedyMovieResult: any = [];
+  documentaryMovieResult: any = [];
+  sciencefictionMovieResult: any = [];
+  thrillerMovieResult: any = [];
+
   constructor(private movieApiService:MovieApiServiceService){}
 
   ngOnInit():void{
-    this.bannerData()
-    this.trendingData()
+    this.bannerData();
+    this.trendingData();
+    this.actionMovie();
+    this.adventureMovie();
+    this.comedyMovie();
+    this.animationMovie();
+    this.documentaryMovie();
+    this.sciencefictionMovie();
+    this.thrillerMovie();
   }
 
   bannerData(){
@@ -28,5 +43,51 @@ export class HomeComponent implements OnInit{
       this.trendingMovieResult = result.results;
     });
   }
+
+  actionMovie() {
+    this.movieApiService.fetchActionMovies().subscribe((result) => {
+      this.actionMovieResult = result.results;
+    });
+  }
+
+  adventureMovie() {
+    this.movieApiService.fetchAdventureMovies().subscribe((result) => {
+      this.adventureMovieResult = result.results;
+    });
+  }
+
+
+  animationMovie() {
+    this.movieApiService.fetchAnimationMovies().subscribe((result) => {
+      this.animationMovieResult = result.results;
+    });
+  }
+
+
+  comedyMovie() {
+    this.movieApiService.fetchComedyMovies().subscribe((result) => {
+      this.comedyMovieResult = result.results;
+    });
+  }
+
+  documentaryMovie() {
+    this.movieApiService.fetchDocumentaryMovies().subscribe((result) => {
+      this.documentaryMovieResult = result.results;
+    });
+  }
+
+
+  sciencefictionMovie() {
+    this.movieApiService.fetchScienceFictionMovies().subscribe((result) => {
+      this.sciencefictionMovieResult = result.results;
+    });
+  }
+
+  thrillerMovie() {
+    this.movieApiService.fetchThrillerMovies().subscribe((result) => {
+      this.thrillerMovieResult = result.results;
+    });
+  }
+
 
 }
